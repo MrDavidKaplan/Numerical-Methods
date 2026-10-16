@@ -10,7 +10,7 @@ OUTPUT_DIR = Path(__file__).resolve().parent / "figures" # folder for figures
 OUTPUT_DIR.mkdir(exist_ok=True)
 
 q = 0.99
-C = q / (1.0 - q) # error-to-change ratio from Q2(a)
+C = q / (1.0 - q) # error-to-change ratio
 tau = 0.01 / C # stopping threshold for target error
 MAX_UPDATES = 1000
 
@@ -33,7 +33,7 @@ def run_until_stop(q_value, threshold):
 rule1 = run_until_stop(q, 0.01) # first stopping rule
 rule2 = run_until_stop(q, tau) # second stopping rule
 
-print("Q2(b) — Convergence and Stopping Criteria")
+print("Convergence and Stopping Criteria")
 print(f"C = {C:.0f}")
 print(f"Tau = {tau:.12f}")
 
@@ -86,7 +86,7 @@ ax2.grid(True, which="both", alpha=0.3)
 ax2.legend()
 
 fig.tight_layout()
-plot_path = OUTPUT_DIR / "q2b_convergence.png"
+plot_path = OUTPUT_DIR / "convergence.png"
 fig.savefig(plot_path, dpi=200)
 plt.close(fig)
 

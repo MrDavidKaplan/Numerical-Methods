@@ -25,7 +25,7 @@ def evaluate_target(name, target):
 
     return solution, residual, feasible
 
-print("Q3(b) — Linear Systems")
+print("Linear Systems")
 
 evaluate_target("Original target b = [1, 1, 3]", b)
 evaluate_target("Modified target b = [1, 1, 2]", b_hat)

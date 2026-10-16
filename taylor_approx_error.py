@@ -19,7 +19,7 @@ B = (0.6 ** 3) / 6.0 # example theoretical maximum error
 
 max_index = np.argmax(error) # returns index of largest element, use index to get error and error's t value
 
-print("Q1(b) — Quadratic Taylor approximation")
+print("Taylor Approximation Error")
 print(f"Maximum sampled absolute error: {error[max_index]:.10f}")
 print(f"Location of maximum error: t = {t[max_index]:.3f}")
 print(f"Theoretical error bound: B = {B:.6f}")
@@ -31,12 +31,12 @@ ax.axhline(B, color="tab:red", linestyle="--",
            linewidth=2, label=f"Taylor remainder bound B = {B:.3f}")
 
 ax.set(xlabel="t", ylabel="Absolute error",
-       title="Q1(b): Error in the Quadratic Taylor Approximation")
+       title="Taylor Approximation Error")
 ax.grid(True, alpha=0.3)
 ax.legend()
 
 fig.tight_layout()
-plot_path = OUTPUT_DIR / "q1b_error.png"
+plot_path = OUTPUT_DIR / "taylor_error.png"
 fig.savefig(plot_path, dpi=200)
 plt.close(fig)
 

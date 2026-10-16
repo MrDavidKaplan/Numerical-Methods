@@ -36,7 +36,7 @@ recommended_h = 1e-5
 recommended_estimate = centered_difference(t0, recommended_h)
 recommended_error = abs(recommended_estimate - true_derivative)
 
-print("Q1(d) — Numerical differentiation")
+print("Numerical differentiation")
 print(f"Exact derivative: {true_derivative:.15f}")
 
 print("\n      h      Forward error     Centered error")
@@ -66,12 +66,12 @@ ax.axvline(recommended_h, color="gray", linestyle="--",
 
 ax.set(xlabel="Step size h (log scale)",
        ylabel="Absolute error (log scale)",
-       title="Q1(d): Numerical Differentiation Error")
+       title="Numerical Differentiation Error")
 ax.grid(True, which="both", alpha=0.3)
 ax.legend()
 
 fig.tight_layout()
-plot_path = OUTPUT_DIR / "q1d_derivative_errors.png"
+plot_path = OUTPUT_DIR / "differentiation_error.png"
 fig.savefig(plot_path, dpi=200)
 plt.close(fig)
 
