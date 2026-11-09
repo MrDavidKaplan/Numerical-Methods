@@ -1,7 +1,7 @@
 
 # Numerical Methods in Python
 
-A collection of Python programs exploring numerical approximation, differentiation, iterative convergence, and linear systems. Each program applies mathematical methods to solve computational problems, evaluate accuracy, and visualize results.
+A collection of Python programs exploring numerical approximation, differentiation, iterative convergence, linear systems, and matrix analysis. Each program applies mathematical methods to solve computational problems, evaluate accuracy, and visualize results.
 
 ## 1. Taylor Approximation and Error Analysis
 
@@ -151,6 +151,88 @@ The original target requires a negative component quantity, while the modified t
 
 ---
 
+## 5. Iterative Linear Algebra and Matrix Analysis
+
+**Program:** `linearalgebra.py`
+
+### Problem
+How can iterative numerical methods solve linear systems efficiently, and how can matrix properties predict convergence and stability?
+
+The program investigates three computational methods.
+
+### Jacobi and Gauss-Seidel Methods
+
+We solve:
+
+$$
+A\mathbf{x}=\mathbf{b}
+$$
+
+using iterative updates rather than direct matrix inversion.
+
+- **Jacobi:** Updates all variables using values from the previous iteration.
+- **Gauss-Seidel:** Uses newly calculated values immediately, often improving convergence speed.
+
+Accuracy is measured using the relative infinity-norm residual:
+
+$$
+\rho_k=\frac{\|A\mathbf{x}^{(k)}-\mathbf{b}\|_\infty}{\|\mathbf{b}\|_\infty}
+$$
+
+Iterations terminate when:
+
+$$
+\rho_k<10^{-6}
+$$
+
+**Results:**
+
+| Method | Iterations | Final Residual |
+|---|---:|---:|
+| Jacobi | 14 | 9.734e-7 |
+| Gauss-Seidel | 9 | 1.498e-7 |
+
+Both methods approach the same solution, but Gauss-Seidel converges faster.
+
+### Matrix Iteration and Stability
+
+We investigate a discrete dynamical system:
+
+$$
+\mathbf{x}_{k+1}=M\mathbf{x}_k
+$$
+
+where:
+
+$$
+M=\frac15\begin{bmatrix}3&1\\1&3\end{bmatrix}
+$$
+
+The eigenvalues of $M$ are 0.8 and 0.4.
+
+Because both eigenvalues have magnitude less than 1, repeated multiplication causes the system to converge toward zero.
+
+### Singular Value Analysis
+
+Singular Value Decomposition expresses a matrix as:
+
+$$
+A=U\Sigma V^T
+$$
+
+The singular values describe how strongly a matrix stretches vectors along its principal directions.
+
+The program compares two matrices differing by a single entry.
+
+| Matrix | Singular Values |
+|---|---|
+| Original | 3, 1 |
+| Corrected | 2.2361, 2.2361 |
+
+**Result:** The original matrix stretches vectors differently depending on direction. The corrected matrix stretches all vectors uniformly by $\sqrt5$, illustrating how a single matrix entry can significantly change geometric behavior.
+
+---
+
 ## Running the Programs
 
 **Language:** Python 3
@@ -170,9 +252,10 @@ python3 taylor_approx_error.py
 python3 numerical_differentiation.py
 python3 convergence.py
 python3 linear_systems.py
+python3 linearalgebra.py
 ```
 
-Each program prints its numerical results to the terminal. Programs that generate visualizations automatically save their graphs to the `figures/` directory.
+Each program prints its numerical results to the terminal. The original visualization programs save graphs to the `figures/` directory, while the linear algebra program displays its plots interactively.
 
 ---
 
